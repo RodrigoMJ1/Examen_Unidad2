@@ -1,0 +1,148 @@
+<script>
+var reservacion = [];
+var datosRevervacion = [];
+var sinM = [];
+var M1 = [];
+var M2 = [];
+var M3 = [];
+var M4 = [];
+var M5 = [];
+var M6 = []; 
+var repetir = true;
+
+while(repetir == true){
+    opcion = parseInt(prompt("Ingresa el numero de opcion a realizar: \n1.-Registrar reservacion\n2.-Mostrar reservaciones\n3.-Mesas disponibles\n4.-Salir"));
+    switch (opcion) {
+        case 1:
+            var numMesas = parseInt(prompt("Cuantas mesas desea reservar: "));
+            if(M6.includes(datosRevervacion[5])){
+                alert("Numero de registros por mesas maximo alzanzado");
+            }else{   
+            Registro();
+            estatusReservaciones();
+            }
+        break;
+        case 2:
+            mesasOcupadas();
+        break;
+        case 3:
+            estatusReservaciones();
+        break;
+        case 4:
+            alert("Saliendo del programa");
+            repetir = false;
+        break;
+        default:
+            alert("Opcion no encontrada");
+        break;
+        }
+}
+
+function Registro(){
+    if(numMesas <= 6){        
+        for(let i=0;i < numMesas;i++){
+            let nombre = prompt("Ingresa el nombre de a quien se le asignara la mesa: ");
+            let fecha = prompt("Ingresa la fecha de reservacion:");
+            let mesa = ("Mesa "+ (i + 1));
+            reservacion=[nombre,fecha,mesa];
+            datosRevervacion.push(reservacion);
+                switch(mesa){
+                    case "Mesa 1":
+                        M1.push(reservacion);
+                    break;
+                    case "Mesa 2":
+                        M2.push(reservacion);
+                    break;
+                    case "Mesa 3":
+                        M3.push(reservacion);
+                    break;
+                    case "Mesa 4":
+                        M4.push(reservacion);
+                    break;
+                    case "Mesa 5":
+                        M5.push(reservacion);
+                    break;
+                    case "Mesa 6":
+                        M6.push(reservacion);
+                    break;
+                    default:
+                    
+                    break;
+                }    
+   
+        }
+    }else{
+        alert("Numero de mesas excedido");
+    }
+}
+
+
+function mesasOcupadas() {
+    revisarReservacion = true;
+    if (revisarReservacion == M1.includes(datosRevervacion[0] )) {
+        console.log("Mesa 1 ocupada ");
+        console.log(datosRevervacion[0]);
+    }
+    if (revisarReservacion == M2.includes(datosRevervacion[1] )) {
+        console.log("Mesa 2 ocupada ");
+        console.log(datosRevervacion[1]);
+    }
+    if (revisarReservacion == M3.includes(datosRevervacion[2] )) {
+        console.log("Mesa 3 ocupada ");
+        console.log(datosRevervacion[2]);
+    }
+    if (revisarReservacion == M4.includes(datosRevervacion[3] )) {
+        console.log("Mesa 4 ocupada ");
+        console.log(datosRevervacion[3]);
+    }
+    if (revisarReservacion == M5.includes(datosRevervacion[4] )) {
+        console.log("Mesa 5 ocupada ");
+        console.log(datosRevervacion[4]);
+    }
+    if (revisarReservacion == M6.includes(datosRevervacion[5] )) {
+        console.log("Mesa 6 ocupada ");
+        console.log(datosRevervacion[5]);
+    }
+    return revisarReservacion;
+}
+    function estatusReservaciones() {
+        revisarReservacion = false;
+        if (revisarReservacion == M1.includes(datosRevervacion[0] )) {
+            console.log("Mesa 1 desocupada ");
+        }else{
+            console.log("Mesa 1 ocupada ");
+        }
+
+        if (revisarReservacion == M2.includes(datosRevervacion[1] )) {
+            console.log("Mesa 2 desocupada ");
+        }else{
+            console.log("Mesa 2 ocupada ");
+        }
+
+        if (revisarReservacion == M3.includes(datosRevervacion[2] )) {
+            console.log("Mesa 3 desocupada ");
+        }else{
+            console.log("Mesa 3 ocupada ");
+        }
+
+        if (revisarReservacion == M4.includes(datosRevervacion[3] )) {
+            console.log("Mesa 4 desocupada ");
+        }else{
+            console.log("Mesa 4 ocupada ");
+        }
+
+        if (revisarReservacion == M5.includes(datosRevervacion[4] )) {
+            console.log("Mesa 5 desocupada ");
+        }else{
+            console.log("Mesa 5 ocupada ");
+        }
+
+        if (revisarReservacion == M6.includes(datosRevervacion[5] )) {
+            console.log("Mesa 6 desocupada ");
+        }else{
+            console.log("Mesa 6 ocupada ");
+        }
+
+        return revisarReservacion;   
+    }   
+</script>
