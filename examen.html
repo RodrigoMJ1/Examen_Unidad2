@@ -1,7 +1,6 @@
 <script>
 var reservacion = [];
 var sinM = [];
-var repetir = true;
 var contMesa = [];
 var mesas = [];
 var M1 = [];
@@ -10,27 +9,29 @@ var M3 = [];
 var M4 = [];
 var M5 = [];
 var M6 = [];
+var repetir = true;
 
 menuOpciones();
 
 function menuOpciones(){
 while(repetir == true){
-    var opcion = parseInt(prompt("Ingresa el numero de opcion a realizar: \n1.-Registrar reservacion\n2.-Mostrar reservaciones\n3.-Mesas disponibles\n4.-Salir"));
+var opcion = parseInt(prompt("Ingresa el numero de opcion a realizar: \n1.-Registrar reservacion\n2.-Mostrar reservaciones\n3.-Mesas disponibles\n4.-Salir"));
     switch (opcion) {
         case 1:
             if(contMesa.length == 6){
-                alert("Numero de registros por mesas maximo alzanzado");
+            alert("Numero de registros por mesas maximo alzanzado");
             }else{   
             Registro();
             }
         break;
         case 2:
-                Reservaciones();
+            Reservaciones();
         break;
-        case 3: if (contMesa.length == 0){
+        case 3: 
+            if (contMesa.length == 0){
             alert("Todas las mesas estan disponibles");
             }else{
-             console.log("Disponibilidad:");
+            console.log("Disponibilidad:");
             estatusReservaciones(); }
         break;
         case 4:
@@ -40,116 +41,111 @@ while(repetir == true){
         default:
             alert("Opcion no encontrada");
         break;
-        }
+    }
 }
 }
 
-function Registro(){ // NO TOCAAAAAR de aquí
-            let nombre = prompt("Ingresa el nombre de a quien se le asignara la mesa: ");
-            let fecha = prompt("Ingresa la fecha de reservacion: ");
-            let mesa = parseInt(prompt("Ingrese el numero de mesa que desee (1-6): "));
-            if(mesa <=6){
-            for(i = 0; i < contMesa.length; i++){
-            while(mesa == contMesa[i]){
+function Registro(){ 
+let nombre = prompt("Ingresa el nombre de a quien se le asignara la mesa: ");
+let fecha = prompt("Ingresa la fecha de reservacion: ");
+let mesa = parseInt(prompt("Ingrese el numero de mesa que desee (1-6): "));
+if(mesa <=6){
+    for(i = 0; i < contMesa.length; i++){
+        while(mesa == contMesa[i]){
             alert("Mesa no disponible");
             menuOpciones();
-            }} 
-            reservacion = [nombre, "con fecha " + fecha];
-            contMesa.push(mesa);
-            let M = "M" + mesa;
-            switch(M){
-                case "M1":
-                    M1.push(reservacion);
-                break;
-                case "M2":
-                    M2.push(reservacion);
-                break;
-                case "M3":
-                    M3.push(reservacion);
-                break;
-                case "M4":
-                    M4.push(reservacion);
-                break;
-                case "M5": 
-                    M5.push(reservacion);
-                break;
-                case "M6":
-                    M6.push(reservacion);
-                break;
-            }
-            alert("Reservacion registrada con exito");
         }
-            else{
-                alert("Ingrese un numero valido");
-            }
-             
-                      
+    } 
+    reservacion = [nombre + " con fecha " + fecha];
+    contMesa.push(mesa);
+    let M = "M" + mesa;
+    switch(M){
+        case "M1":
+            M1.push(reservacion);
+        break;
+        case "M2":
+            M2.push(reservacion);
+        break;
+        case "M3":
+            M3.push(reservacion);
+        break;
+        case "M4":
+            M4.push(reservacion);
+        break;
+        case "M5": 
+            M5.push(reservacion);
+        break;
+        case "M6":
+            M6.push(reservacion);
+        break;
+    }
+    alert("Reservacion registrada con exito");
+}
+else{alert("Ingrese un numero valido");
+}                      
 } 
-
-
-
 
 function Reservaciones() {
 console.log("Reservaciones:")
 for(z = 0; z < contMesa.length; z++){
-  switch (contMesa[z]){
-          case 1:
-                console.log("Mesa 1 ocupada por:  " + M1 );
-          break;
-          case 2:
-                console.log("Mesa 2 ocupada por:  " + M2 );
-          break;
-          case 3: 
-                console.log("Mesa 3 ocupada por:  " + M3 );
-          break;
-          case 4: 
-                console.log("Mesa 4 ocupada por:  " + M4 );
-          break;
-          case 5:
-                console.log("Mesa 5 ocupada por:  " + M5 );
-          break;
-          case 6:
-                console.log("Mesa 6 ocupada por:  " + M6 );
-          break;
-  }}
+    switch (contMesa[z]){
+        case 1:
+            console.log("Mesa 1 ocupada por:  " + M1 );
+        break;
+        case 2:
+            console.log("Mesa 2 ocupada por:  " + M2 );
+        break;
+        case 3: 
+            console.log("Mesa 3 ocupada por:  " + M3 );
+        break;
+        case 4: 
+            console.log("Mesa 4 ocupada por:  " + M4 );
+        break;
+        case 5:
+            console.log("Mesa 5 ocupada por:  " + M5 );
+        break;
+        case 6:
+            console.log("Mesa 6 ocupada por:  " + M6 );
+        break;
+    }
 }
+}
+
 function estatusReservaciones(){
-if(M6.length == 0){  
+if(contMesa.length < 6){  
     if (M1.length == 0){
         console.log("Mesa 1 disponible");
     }
-    else{
-        console.log("Mesa 1 ocupada");
+    else{console.log("Mesa 1 ocupada");
     }
     if (M2.length == 0){
         console.log("Mesa 2 disponible");
     }
-    else{
-        console.log("Mesa 2 ocupada");
+    else{console.log("Mesa 2 ocupada");
     }
     if (M3.length == 0){
         console.log("Mesa 3 disponible");
     }
-    else{
-        console.log("Mesa 3 ocupada");
+    else{console.log("Mesa 3 ocupada");
     }
     if (M4.length == 0){
         console.log("Mesa 4 disponible");
     }
-    else{
-        console.log("Mesa 4 ocupada");
+    else{console.log("Mesa 4 ocupada");
     }
     if (M5.length == 0){
         console.log("Mesa 5 disponible");
     }
-    else{
-        console.log("Mesa 5 ocupada");
+    else{console.log("Mesa 5 ocupada");
     }
-    console.log("Mesa 6 disponible");
+    if (M6.length == 0){
+        console.log("Mesa 6 disponible");
     }
-    else{
-        alert("Lo siento no hay mesas disponibles, vuelva pronto");
+    else {console.log("Mesa 6 ocupada");
     }
-            
+}
+else{alert("Lo siento no hay mesas disponibles, vuelva pronto");
+repetir = false;
+}
 }   
 </script>
